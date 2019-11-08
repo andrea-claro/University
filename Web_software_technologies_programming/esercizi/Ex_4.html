@@ -1,0 +1,97 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>ESEMPIO MENU A TENDINA</title>
+
+        <script src="./../developing/jquery.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#nav li').hover(
+                    function(){
+                        //mostra sottomenu
+                        $('ul', this).delay(50).slideDown(100);
+                    },
+
+                    function(){
+                        //nascondi sottomenu
+                        $('ul', this).slideUp(200);
+                    }
+                );
+            });
+        </script>
+
+        <style>
+            #nav li{
+                float: left;
+                display: block;
+                width: 100px;
+                background: #E0E0E0;
+                position: relative;
+                margin: 0 1px;
+            }
+
+            #nav li a{
+                display: block;
+                padding: 8px 5px 0 5px;
+                text-decoration: none;
+                text-align: center;
+                color: #333;
+            }
+
+            #nav li a:hover{
+                color: #C00;
+            }
+
+            #nav ul{
+                position: absolute;
+                display: none;
+                padding: 0;
+            }
+
+            #nav ul li{
+                width: 100px;
+                border-top: 1px solid #fff;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul id="nav">
+            <li>
+                <a href="#">H</a>
+                <ul>
+                    <li>
+                        <a href="http://www.google.com">Glugluglu</a>
+                    </li>
+
+                    <li>
+                        <a href="http://www.google.com">#</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="http://www.google.com">Sattoh</a>
+                <ul>
+                    <li>
+                        <a href="http://www.google.com">Today</a>
+                    </li>
+                    <li>
+                        <a href="http://www.google.com">Yesterday</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="http://www.google.com">giaggio</a>
+                <ul>
+                    <li>
+                        <a href="http://www.google.com">ergsgs</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>

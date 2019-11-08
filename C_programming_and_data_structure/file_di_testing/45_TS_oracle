@@ -1,0 +1,8 @@
+TC 1 - (dieci elementi ordinati in modo crescente) 
+3 8 31 32 61 67 68 654 4648
+
+TC 2 - (dieci elementi ordinati in modo crescente) 
+1 5 7 9 11 15 28 78 99 100
+
+TC 3 - (dieci elementi di cui alcune ripetizioni)
+0 18 18 31 32 32 66 165 165 648

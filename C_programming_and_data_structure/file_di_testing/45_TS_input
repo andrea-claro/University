@@ -1,0 +1,8 @@
+TC 1 - (dieci elementi ordinati casualmente) 
+68 67 31 8 654 3 61 4648 32
+
+TC 2 - (dieci elementi gia' ordinati)
+1 5 7 9 11 15 28 78 99 100
+
+TC 3 - (dieci elementi di cui alcune ripetizioni)
+31 66 165 18 32 32 18 165 0 648

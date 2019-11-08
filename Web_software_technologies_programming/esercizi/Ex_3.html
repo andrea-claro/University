@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="Utf-8" type="text/javascript"/>
+        <title>
+            Resizing excersize
+        </title>
+    </head>
+
+    <body>
+        <script>
+            onload= wSizes;
+            onresize= wSizes;
+            
+            function wSizes(){
+                document.getElementById("foo").innerHTML= "Screen width: "+innerWidth+", Screen height: "+innerHeight;
+            }
+        
+        window.onload= init();
+        </script>
+        
+        <div id="foo"></div>
+    </body>
+</html>

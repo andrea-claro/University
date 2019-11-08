@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>
+            Append html excersize 
+        </title>
+    </head>
+
+    <body>
+        <script>
+            function addingProduct(f){
+                if(f.color.value == "Red"){
+                    var child = document.createElement('div');
+                    child.innerHTML = '<ul><li><font color="red">'+f.product.value+'</font></li></ul><br/>';
+                    child = child.firstChild;
+                    document.getElementById('foo').appendChild(child);
+                }
+                
+
+                else if(f.color.value == "Green"){
+                    var child = document.createElement('div');
+                    child.innerHTML = '<ul><li><font color="green">'+f.product.value+'</font></li></ul><br/>';
+                    child = child.firstChild;
+                    document.getElementById('foo').appendChild(child);
+                }
+
+                else if(f.color.value == "Black"){
+                    var child = document.createElement('div');
+                    child.innerHTML = '<ul><li><font color="black">'+f.product.value+'</font></li></ul><br/>';
+                    child = child.firstChild;
+                    document.getElementById('foo').appendChild(child);
+                }
+            }
+        </script>
+
+        <form>
+            <select name="color" value="color">
+                <option>Red</option>
+                <option>Green</option>
+                <option>Black</option>
+            </select>
+
+            &nbsp;&nbsp;
+            
+            <input type="text" name="product" placeholder="insert a prodoct"/>
+            <br/>
+            <center>
+                <input type="button" value="Add" onclick="addingProduct(this.form)"/>
+            </center>
+            
+            <br/>
+            <hr/>
+            <br/>
+
+        </form>
+
+        <div id="foo">LISTA<br></div>
+    </body>
+</html>
