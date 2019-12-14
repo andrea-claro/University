@@ -3,7 +3,7 @@
 # indica il numero massimo di istanze che possono essere create.
 # Se si tenta di creare più di i istanze della classe decorata si
 # ha un RuntimeError. Il codice di questo esercizio deve essere
-# scritto nel file esercizio3.py
+# scritto nel file esercizio3_Iparte.py
 
 def decoraClasse(k):
     def wrapper(cls):

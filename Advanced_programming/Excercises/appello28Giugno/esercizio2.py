@@ -1,26 +1,42 @@
-#Scrivere nel file esercizio2.py il decoratore di classe
-# decoraClasse che trasforma la classe in una classe di cui può
-# esistenre al più un'istanza. Se si tenta di creare più di
-# un'istanza della classe decorata si ha un RuntimeError
+"""Scrivere nel file esercizio2.py il decoratore di funzione decoratore che trasforma in interi gli argomenti
+non keyword della funzione decorata utilizzando int(); se un argomento non e`trasformabile in intero con int()
+allora la funzione stampa "L'argomento {} non puo` essere convertito"e lo fa per ogni argomento non convertibile.
+Nel caso in cui la conversione di tutti gli argomenti non keyword vada a buon fine, il  decoratore
+deve stampare il risultato della funzione invocata con gli argomenti non keyword convertiti in interi.
+Le docstring delle funzioni decorate non devono essere modificate dal decoratore."""
+import functools
 
-def decoraClasse(cls):
-    old_new= getattr(cls, '__new__')
-    def newNew(cls, *args, **kwargs):
-        if '_instance' not in cls.__dict__:
-            setattr(cls, '_instance', True)
-            return old_new(cls, *args, **kwargs)
+
+def decoratore(function):
+    @functools.wraps(function)
+
+    def wrapper(args=[], kwargs={}):
+
+        def stampa(argomento):
+            print("L'argomento {} non puo` essere convertito".format(argomento))
+
+        interi = []
+        convert = False
+        for i in range(0, len(args)):
+
+            try:
+                interi.append(int(args[i]))
+            except:
+                interi.append(args[i])
+
+            if not isinstance(interi[i], int):
+                stampa(interi[i])
+                convert = True
         else:
-            raise RuntimeError('Istanza esistente')
-    setattr(cls, '__new__', newNew)
-    return cls
+            if not convert:
+                function(args, kwargs)
+
+    return wrapper
 
 
-@decoraClasse
-class Spam:
-    pass
+@decoratore
+def funzione(*args, **kwargs):
+    print("Ho convertito tutti gli argomenti {}".format(args, kwargs))
 
 
-x= Spam()
-print(type(x))
-y= Spam()
-
+funzione([1, 2, 3, "4", "5", 6])

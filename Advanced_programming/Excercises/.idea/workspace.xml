@@ -38,7 +38,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.15_Esercizio_9">
+  <component name="RunManager" selected="Python.esercizio2">
     <configuration name="10_Esercizio_1" type="PythonConfigurationType" factoryName="Python" folderName="PrimoSetEsercizi" nameIsGenerated="true">
       <module name="Excercises" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -333,6 +333,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="22_ufficioPostale" type="PythonConfigurationType" factoryName="Python" folderName="EserciziProf" nameIsGenerated="true">
+      <module name="Excercises" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/EserciziProf" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/EserciziProf/22_ufficioPostale.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="2_sostituzioneMetodo" type="PythonConfigurationType" factoryName="Python" folderName="EserciziProf" nameIsGenerated="true">
       <module name="Excercises" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -564,7 +585,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="esercizio3" type="PythonConfigurationType" factoryName="Python" folderName="appello28Giugno" nameIsGenerated="true">
+    <configuration name="esercizio3_IIparte" type="PythonConfigurationType" factoryName="Python" folderName="appello28Giugno" nameIsGenerated="true">
       <module name="Excercises" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -576,7 +597,28 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/appello28Giugno/esercizio3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/appello28Giugno/esercizio3_IIparte.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="esercizio3_Iparte" type="PythonConfigurationType" factoryName="Python" folderName="appello28Giugno" nameIsGenerated="true">
+      <module name="Excercises" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/appello28Giugno" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/appello28Giugno/esercizio3_Iparte.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -632,8 +674,10 @@
       <item itemvalue="Python.19_myDictionary" />
       <item itemvalue="Python.17_ricercaRicorsivaLista" />
       <item itemvalue="Python.esercizio2" />
-      <item itemvalue="Python.esercizio3" />
       <item itemvalue="Python.esercizio1" />
+      <item itemvalue="Python.esercizio3_Iparte" />
+      <item itemvalue="Python.esercizio3_IIparte" />
+      <item itemvalue="Python.22_ufficioPostale" />
       <item itemvalue="Python.1_aggiungiMetodo" />
       <item itemvalue="Python.2_sostituzioneMetodo" />
       <item itemvalue="Python.3_passaggioFunzione" />
@@ -670,5 +714,16 @@
       <updated>1572205162340</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/appello28Giugno/esercizio3_IIparte.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

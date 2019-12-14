@@ -9,7 +9,6 @@ class Borg():
         obj.__dict__ = cls._shared_state
         return obj
 
-
 class Child(Borg):
     pass
 
@@ -25,7 +24,7 @@ print(child.only_one_var)
 
 
 class AnotherChild(Borg):
-    pass
+    _shared_state = {}
 
 
 another_child = AnotherChild()

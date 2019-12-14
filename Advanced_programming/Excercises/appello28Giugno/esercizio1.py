@@ -1,75 +1,119 @@
-#Scrivere nel file esercizio1.py una funzione generatrice
-# myGenerator(n) che prende in input un intero n>=1 e
-# restituisce un iteratore dei primi n fattoriali. In altre
-# parole, la prima volta che viene invocato next viene restituito
-# 1!, la seconda volta 2!, la terza volta 3!, e così via
-# fino ad n!.
-#All'esercizio verrà assegnato un bonus se la funzione generatrice
-# sarà definita ricorsivamente. È possibile scrivere una funzione
-# generatrice ricorsiva che prende in input più parametri e che
-# poi viene opportunamente invocata da myGenerator
+"""Scrivere nel file esercizio1.py una funzione che prende in  input una sequenza di
+richieste (liste di due interi) e passa ciascuna richiesta  ad una catena di  gestori ciascuno dei quali e` una coroutine.
+    •Se il primo intero della lista e` nell’intervallo [0,4] allora la richiesta viene gestita dal gestore Handler_04che
+        stampa “Richiesta {} gestita da Handler_04“.
+    •Se il primo intero della listae` nell’intervallo [5,9] allora la richiesta viene gestita dal gestore Handler_59che
+        stampa “Richiesta {} gestita da Handler_59“.
+    •Se il primo intero della lista e` maggioredi 9 allora la richiesta viene gestita dal gestore Handler_gt9 che
+        stampa “Messaggio daHandler_gt9: non e` stato possibile gestire la richiesta{}. Richiesta modificata".
+        Dopo aver effettuato la stampa Handler_gt9 sottrae al primo intero della lista il secondo intero della lista e
+        lo invia nuovamente ad una nuova catena di gestori.
+    •Se il primo intero della lista e` minore di 0 la richiesta viene gestita da Default_Handler che
+        stampa semplicemente “Richiesta {} gestita da Default_Handler: non e` stato possibile gestire la
+        richiesta{}”.
+Nelle suddette stampe  la lista nella  richiesta deve comparire al posto delle parentesi graffe."""
+import functools
 
-def fact(n):
-    if n == 0:
-        return 1
-    else:
-        return n * fact(n-1)
 
-def myGenerator(n):
-    if n >= 1:
-        for k in range(1, n+1):
-            yield fact(k)
-    else:
-        raise ValueError('Il valore passato è inferiore ad 1')
-
-for k in myGenerator(3):
-    print(k)
-
-print()
-
-# import functools
+# class Null_Handler:
+#
+#     def __init__(self, successor=None):
+#         self._successor = successor
+#
+#     def handling(self, event):
+#         if self._successor is not None:
+#             self._successor.handling(event)
 #
 #
-# def fattoriale(n):
+# class Handler_04(Null_Handler):
 #
-#     result = []
-#
-#     def gen(n):
-#         if n == 1:
-#             result.append(1)
-#             yield 1
+#     def handling(self, request):
+#         if request[0] in range(0, 4):
+#             print("Richiesta {} gestita dal gestore Handler_04".format(request))
 #         else:
-#             yield from gen(n-1)
-#             x = result.pop()*n
-#             result.append(x)
-#             yield x
-#
-#     return gen(n)
+#             super().handling(request)
 #
 #
-# gen = fattoriale(5)
+# class Handler_59(Null_Handler):
 #
-# print(next(gen))
-# print(next(gen))
-# print(next(gen))
-# print(next(gen))
-# print(next(gen))
+#     def handling(self, request):
+#         if request[0] in range(5, 9):
+#             print("Richiesta {} gestita dal gestore Handler_59".format(request))
+#         else:
+#             super().handling(request)
+#
+#
+# class Handler_gt9(Null_Handler):
+#     def handling(self, request):
+#         if request[0] > 9:
+#             print("Messaggio daHandler_gt9: non e` stato possibile gestire la richiesta {}. Richiesta modificata".format(request))
+#         else:
+#             super().handling(request)
+#
+#
+# class Default_Handler(Null_Handler):
+#
+#     def handling(self, request):
+#         if request[0] < 0:
+#             print("Richiesta {} gestita da Default_Handler: non e` stato possibile gestire la richiesta {}".format(request))
+#         else:
+#             super().handling(request)
 
 
+def coroutine(function):
+    @functools.wraps(function)
+    def wrapper(*args, **kwargs):
+        generator = function(*args, **kwargs)
+        next(generator)
+        return generator
+    return wrapper
 
-def myGeneratorAux(n, c, p):
-    if n == 1:
-        yield p
-    else:
-        yield p
-        c+= 1
-        p*= c
-        yield from myGeneratorAux(n-1, c, p)
+@coroutine
+def Null_handler(successor=None):
+    while(True):
+        event = (yield)
+        successor.send(event)
 
-def myGenerator(n):
-    return myGeneratorAux(n, 1, 1)
+@coroutine
+def Default_Handler(successor=None):
+    while(True):
+        event = (yield)
+        if event[0] < 0:
+            print("Richiesta {} gestita da Default_Handler: non e` stato possibile gestire la richiesta {}".format(event))
+        else:
+            successor.send(event)
 
-if __name__ == '__main__':
-    print("I primi 6 fattoriali sono: ")
-    for x in myGenerator(6):
-        print(x)
+@coroutine
+def Handler_04(successor=None):
+    while(True):
+        event = (yield)
+        if event[0] in range(0, 4):
+            print("Richiesta {} gestita dal gestore Handler_04".format(event))
+        else:
+            successor.send(event)
+
+@coroutine
+def Handler_59(successor=None):
+    while (True):
+        event = (yield)
+        if event[0] in range(5, 9):
+            print("Richiesta {} gestita dal gestore Handler_59".format(event))
+        else:
+            successor.send(event)
+
+@coroutine
+def Handler_gt9(successor=None):
+    while (True):
+        event = (yield)
+        if event[0] > 9:
+            print("Messaggio da Handler_gt9: non e` stato possibile gestire la richiesta {}. Richiesta modificata".format(event))
+        else:
+            successor.send(event)
+
+def reciever(richieste=[]):
+    pipeline = Default_Handler(Handler_04(Handler_59(Handler_gt9(Null_handler))))
+    for request in richieste:
+        print(request)
+        pipeline.send(request)
+
+reciever([[5, 9], [10, 6], [3, 7]])

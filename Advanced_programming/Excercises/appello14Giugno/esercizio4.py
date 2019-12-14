@@ -7,3 +7,4 @@
 # deve riceve in input il testo del file e non il file. La funzione procTesto deve inoltre
 # stampare per ciascuna coppia file-stringa se la stringa e` presente o meno nel file.
 # Le stampe devono avvenire nell’ordine in cui terminano i processi e al termine degli stessi.
+

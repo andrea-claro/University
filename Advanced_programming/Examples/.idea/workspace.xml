@@ -31,7 +31,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.proxy">
+  <component name="RunManager" selected="Python.prototype">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="Examples" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -53,7 +53,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="borg" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="borg" type="PythonConfigurationType" factoryName="Python" folderName="Slide9" nameIsGenerated="true">
       <module name="Examples" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -61,11 +61,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/../bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Slide 9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Slide9" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Slide 9/borg.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Slide9/borg.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -74,7 +74,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="proxy" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="prototype" type="PythonConfigurationType" factoryName="Python" folderName="Slide12" nameIsGenerated="true">
       <module name="Examples" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -82,11 +82,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/../bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Slide 9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Slide12" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Slide 9/proxy.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Slide12/prototype.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -95,7 +95,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="singleton" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="proxy" type="PythonConfigurationType" factoryName="Python" folderName="Slide9" nameIsGenerated="true">
       <module name="Examples" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -103,11 +103,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/../bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Slide 9" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Slide9" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Slide 9/singleton.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Slide9/proxy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="singleton" type="PythonConfigurationType" factoryName="Python" folderName="Slide9" nameIsGenerated="true">
+      <module name="Examples" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Slide9" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Slide9/singleton.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -117,9 +138,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.singleton" />
-      <item itemvalue="Python.borg" />
       <item itemvalue="Python.proxy" />
+      <item itemvalue="Python.borg" />
+      <item itemvalue="Python.singleton" />
+      <item itemvalue="Python.prototype" />
     </list>
   </component>
   <component name="SvnConfiguration">
