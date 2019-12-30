@@ -9,6 +9,8 @@
 # Le stampe devono avvenire nell’ordine in cui terminano i processi e al termine degli stessi.
 
 import multiprocessing
+import functools
+from datetime import datetime
 
 def precTesto(parole=None, lstNomiFile=[]):
     for i in range(0, len(lstNomiFile)):
@@ -33,29 +35,47 @@ precTesto(parole, nomiFile)
 
 
 
+def timer(func): 
+    """decoratore che pemette di misuare il tempo di esecuzione"""
+    @functools.wraps(func)
+    def wrapper(*args, **kargs):
+        start = datetime.now()
+        result = func(*args, **kargs)
+        finish = datetime.now()
+        print(f'{func.__name__} finito in {finish-start} secondi')
+        return result
+    return wrapper
 
-
-
-def procTesto(concorrenza=False, fileParole=None, lstNomiFile=[]):
-    create_processes(concorrenza, parole, lstNomiFile)
-
-def create_processes(concorrenza=False, parole=None, lstNomiFile=[]):
+@timer
+def procTesto(concorrenza=False, parole=None, lstNomiFile=[]):
     if concorrenza is True:
-        for i in range(0, len(lstNomiFile)):
-            process = multiprocessing.Process(target=worker, name="Pippo", args=(i, parole, lstNomiFile[i]))
-            process.daemon = True
-            process.start()
-            process.join()
+        jobs = multiprocessing.JoinableQueue()
+        create_processes(len(lstNomiFile), jobs)
+        add_jobs(jobs, parole, lstNomiFile)
+        jobs.join()
     else:
-        print("NO CONCORRENZA")
+        precTesto(parole, lstNomiFile)
 
-def worker(i=-1, parole=None, file=None):
-    with open(file, "r") as f:
-        testo = f.read().split()
-    if parole[i] in testo:
-        print(f"Associazione presente \"{parole[i]}\"")
-    else:
-        print(f"Parola non presente \"{parole[i]}\" in {testo}")
+def create_processes(nFile, jobs=None):
+    for _ in range(nFile):
+        process = multiprocessing.Process(target=worker, args=(jobs,))
+        process.daemon = True
+        process.start()
+
+def add_jobs(jobs, parole, lstNomiFile):
+    for n, (parola, f) in enumerate(zip(parole, lstNomiFile)):
+        jobs.put((n, parola, f))
+
+def worker(jobs=None):
+    while True:
+        n, parola, nomeFile = jobs.get()
+        with open(nomeFile, "r") as f:
+            text = f.read().split()
+            if parola in text:
+                print(f"La stringa \"{parola}\" e' presente nel file \"{nomeFile}\"")
+            else:
+                print(f"La stringa \"{parola}\" non e' presente nel file \"{nomeFile}\"")
+            jobs.task_done()
 
 print("---------------------------CONCORRENZA--------------------------------")            
 procTesto(True , parole, nomiFile)
