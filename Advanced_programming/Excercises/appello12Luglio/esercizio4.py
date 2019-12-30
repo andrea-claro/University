@@ -9,4 +9,4 @@
 # di file e la parola.
 
 def conta(parola, concorrenza, fileNames=[]):
-
+    pass
