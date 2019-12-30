@@ -10,22 +10,22 @@
 
 import multiprocessing
 
-def precTesto(fileParole=None, lstNomiFile=[]):
-    with open(fileParole, "r") as ff:
-        texto = ff.read().split()
-        for i in range(0, len(lstNomiFile)):
-            with open(lstNomiFile[i], "r") as f:
-                text = f.read().split()
-                confronto(texto, text, i)
+def precTesto(parole=None, lstNomiFile=[]):
+    for i in range(0, len(lstNomiFile)):
+        with open(lstNomiFile[i], "r") as f:
+            text = f.read().split()
+            confronto(i, parole, text)
 
-def confronto(textParole, textFile, n):
-    if textParole[n] in textFile:
-        print("Parola presente")
+def confronto(n, parole=None, text=None):
+    if parole[n] in text:
+        print(f"Associazione presente \"{parole[n]}\"")
     else:
-        print("Parola non presente")
+        print(f"Parola non presente \"{parole[n]}\" - {text}")
             
-print("---------------------------SENZA CONCORRENZA--------------------------------")            
-precTesto("appello14Giugno/parole", ["appello14Giugno/testox", "appello14Giugno/testox-1", "appello14Giugno/testox-2"])
+print("---------------------------SENZA CONCORRENZA--------------------------------")       
+parole= ["andrea", "ciao", "sono", "mio", "fratello", "mamma"]
+nomiFile = ["appello14Giugno/testox-1", "appello14Giugno/testox-2"]
+precTesto(parole, nomiFile)
 
 
 
@@ -37,14 +37,11 @@ precTesto("appello14Giugno/parole", ["appello14Giugno/testox", "appello14Giugno/
 
 
 def procTesto(concorrenza=False, fileParole=None, lstNomiFile=[]):
-    with open(fileParole, "r") as f:
-        parole = f.read().split()
     create_processes(concorrenza, parole, lstNomiFile)
 
 def create_processes(concorrenza=False, parole=None, lstNomiFile=[]):
     if concorrenza is True:
         for i in range(0, len(lstNomiFile)):
-            print(i)
             process = multiprocessing.Process(target=worker, name="Pippo", args=(i, parole, lstNomiFile[i]))
             process.daemon = True
             process.start()
@@ -56,9 +53,9 @@ def worker(i=-1, parole=None, file=None):
     with open(file, "r") as f:
         testo = f.read().split()
     if parole[i] in testo:
-        print("Associazione presente \"{}\"".format(parole[i]))
+        print(f"Associazione presente \"{parole[i]}\"")
     else:
-        print("Parola non presente \"{}\" in {}".format(parole[i], testo))
+        print(f"Parola non presente \"{parole[i]}\" in {testo}")
 
 print("---------------------------CONCORRENZA--------------------------------")            
-procTesto(True ,"appello14Giugno/parole", ["appello14Giugno/testox", "appello14Giugno/testox-1", "appello14Giugno/testox-2"])
+procTesto(True , parole, nomiFile)
