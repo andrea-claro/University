@@ -8,5 +8,5 @@
 # in cui terminano i processi. Il callable usato da conta deve prendere in input la lista
 # di file e la parola.
 
-def conta(parola, concorrenza, *fileNames):
+def conta(parola, concorrenza, fileNames=[]):
 
