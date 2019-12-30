@@ -56,9 +56,9 @@ def worker(i=-1, parole=None, file=None):
     with open(file, "r") as f:
         testo = f.read().split()
     if parole[i] in testo:
-        print("Associazione presente {}-{}".format(parole[i], testo))
+        print("Associazione presente \"{}\"".format(parole[i]))
     else:
-        print("Parola non presente {}-{}".format(parole[i], testo))
+        print("Parola non presente \"{}\" in {}".format(parole[i], testo))
 
 print("---------------------------CONCORRENZA--------------------------------")            
 procTesto(True ,"appello14Giugno/parole", ["appello14Giugno/testox", "appello14Giugno/testox-1", "appello14Giugno/testox-2"])
