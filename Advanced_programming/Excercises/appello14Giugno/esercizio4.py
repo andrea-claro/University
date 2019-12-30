@@ -7,11 +7,10 @@
 # deve ricevere in input il testo del file e non il file. La funzione procTesto deve inoltre
 # stampare per ciascuna coppia file-stringa se la stringa e` presente o meno nel file.
 # Le stampe devono avvenire nell’ordine in cui terminano i processi e al termine degli stessi.
-
 import multiprocessing
 import functools
 from datetime import datetime
-
+#####################################################################
 def precTesto(parole=None, lstNomiFile=[]):
     for i in range(0, len(lstNomiFile)):
         with open(lstNomiFile[i], "r") as f:
@@ -23,18 +22,10 @@ def confronto(n, parole=None, text=None):
         print(f"Associazione presente \"{parole[n]}\"")
     else:
         print(f"Parola non presente \"{parole[n]}\" - {text}")
-            
-print("---------------------------SENZA CONCORRENZA--------------------------------")       
-parole= ["andrea", "ciao", "sono", "mio", "fratello", "mamma"]
-nomiFile = ["appello14Giugno/testox-1", "appello14Giugno/testox-2"]
-precTesto(parole, nomiFile)
+#####################################################################        
 
 
-
-
-
-
-
+#####################################################################
 def timer(func): 
     """decoratore che pemette di misuare il tempo di esecuzione"""
     @functools.wraps(func)
@@ -76,6 +67,18 @@ def worker(jobs=None):
             else:
                 print(f"La stringa \"{parola}\" non e' presente nel file \"{nomeFile}\"")
             jobs.task_done()
+#####################################################################
 
-print("---------------------------CONCORRENZA--------------------------------")            
-procTesto(True , parole, nomiFile)
+
+#####################################################################
+def main():
+    parole = ["andrea", "ciao", "sono", "mio", "fratello", "mamma"]
+    nomiFile = ["appello14Giugno/testox-1", "appello14Giugno/testox-2"]
+    print("---------------------------SENZA CONCORRENZA--------------------------------")       
+    precTesto(parole, nomiFile)
+    print("---------------------------CONCORRENZA JOINABLE QUEUE--------------------------------")            
+    procTesto(True , parole, nomiFile)
+
+if __name__ == "__main__":
+    main()
+#####################################################################
