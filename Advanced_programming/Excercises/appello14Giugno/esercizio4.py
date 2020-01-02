@@ -8,10 +8,33 @@
 # stampare per ciascuna coppia file-stringa se la stringa e` presente o meno nel file.
 # Le stampe devono avvenire nell’ordine in cui terminano i processi e al termine degli stessi.
 import multiprocessing
+import concurrent.futures
 import functools
 from datetime import datetime
-#####################################################################
-def precTesto(parole=None, lstNomiFile=[]):
+
+
+def timer(func): 
+    """decoratore che pemette di misuare il tempo di esecuzione"""
+    @functools.wraps(func)
+    def wrapper(*args, **kargs):
+        start = datetime.now()
+        result = func(*args, **kargs)
+        finish = datetime.now()
+        print(f'{func.__name__} finito in {finish-start} secondi')
+        return result
+    return wrapper
+
+def coroutine(function):
+    @functools.wraps(function)
+    def wrapper(*args,**kwargs):
+        generator=function(*args,**kwargs)
+        next(generator)
+        return generator
+    return wrapper
+
+################### SENZA CONCORRENZA ###############################
+@timer
+def pracTesto(parole=None, lstNomiFile=[]):
     for i in range(0, len(lstNomiFile)):
         with open(lstNomiFile[i], "r") as f:
             text = f.read().split()
@@ -25,27 +48,16 @@ def confronto(n, parole=None, text=None):
 #####################################################################        
 
 
-#####################################################################
-def timer(func): 
-    """decoratore che pemette di misuare il tempo di esecuzione"""
-    @functools.wraps(func)
-    def wrapper(*args, **kargs):
-        start = datetime.now()
-        result = func(*args, **kargs)
-        finish = datetime.now()
-        print(f'{func.__name__} finito in {finish-start} secondi')
-        return result
-    return wrapper
-
+#################### CONCORRENTE QUEUE ##############################
 @timer
-def procTesto(concorrenza=False, parole=None, lstNomiFile=[]):
+def precTesto(concorrenza=False, parole=[], lstNomiFile=[]):
     if concorrenza is True:
         jobs = multiprocessing.JoinableQueue()
         create_processes(len(lstNomiFile), jobs)
         add_jobs(jobs, parole, lstNomiFile)
         jobs.join()
     else:
-        precTesto(parole, lstNomiFile)
+        pracTesto(parole, lstNomiFile)
 
 def create_processes(nFile, jobs=None):
     for _ in range(nFile):
@@ -54,8 +66,8 @@ def create_processes(nFile, jobs=None):
         process.start()
 
 def add_jobs(jobs, parole, lstNomiFile):
-    for n, (parola, f) in enumerate(zip(parole, lstNomiFile)):
-        jobs.put((n, parola, f))
+    for i, (parola, nomeFile) in enumerate(zip(parole, lstNomiFile)):
+        jobs.put((i, parola, nomeFile))
 
 def worker(jobs=None):
     while True:
@@ -70,15 +82,91 @@ def worker(jobs=None):
 #####################################################################
 
 
-#####################################################################
+##################### CONCORRENTE FUTURES ###########################
+@timer
+def pricTesto(concorrenza=False, parole=[], lstNomiFile=[]):
+    if concorrenza is True:
+        futures = set()
+        with concurrent.futures.ProcessPoolExecutor(max_workers=len(lstNomiFile)) as executor:
+            for i, testo, parola in get_jobs(parole, lstNomiFile):
+                future = executor.submit(cerca, i, parola, testo)
+                futures.add(future)
+        wait_for(futures, parole, lstNomiFile)
+    else:
+        pracTesto(parole, lstNomiFile)
+
+def get_jobs(parole=[], lstNomiFile=[]):
+    for i, (parola, nomeFile) in enumerate(zip(parole, lstNomiFile)):
+        with open(nomeFile, "r") as f:
+            testo = f.read()
+            yield i, testo, parola
+
+def wait_for(futures=None, parole=[], lstNomiFile=[]):
+    for future in concurrent.futures.as_completed(futures):
+        res = future.result()
+        if res[0] == True:
+            print("La stringa {} e' presente nel file {}:".format(parole[res[1]],lstNomiFile[res[1]]))
+        else:
+            print("La stringa {} non e' presente nel file {}:".format(parole[res[1]], lstNomiFile[res[1]]))
+
+def cerca (i, parola, testo):
+    for st in testo.split():
+        if st == parola:
+            return (True,i)
+    return (False,i)
+######################################################################
+
+
+##################### CONCORRENTE COROUTINE ##########################
+@timer
+def procTesto(concorrenza=False, parole=[], lstNomiFile=[]):
+    if concorrenza is True:
+        ricevitore = reporter(parole, lstNomiFile)
+        cercatori = dict()
+        for parola in parole:
+            cercatori[parola] = cercatore(ricevitore, parola)
+        try:
+            for i, (parola, nomeFile) in enumerate(zip(parole, lstNomiFile)):
+                with open(nomeFile, "r") as f:
+                    testo = f.read()
+                    cercatori[parola].send((i, testo))
+        finally:
+            for c in cercatori.values():
+                c.close()
+                ricevitore.close()
+    else:
+        pracTesto(parole, lstNomiFile)
+
+@coroutine
+def reporter(parole=[], lstNomiFile=[]):
+    while True:
+        trovato, i = (yield)
+        if trovato is True:
+            print("La stringa {} e' presente nel file {}:".format(parole[i], lstNomiFile[i]))
+        else:
+            print("La stringa {} non e' presente nel file {}:".format(parole[i], lstNomiFile[i]))
+
+@coroutine
+def cercatore(ricevitore, parola):
+    while True:
+        i, testo = (yield)
+        if parola in testo.split():
+            ricevitore.send((True, i))
+        else:
+            ricevitore.send((False, i))
+######################################################################
+
 def main():
     parole = ["andrea", "ciao", "sono", "mio", "fratello", "mamma"]
     nomiFile = ["appello14Giugno/testox-1", "appello14Giugno/testox-2"]
     print("---------------------------SENZA CONCORRENZA--------------------------------")       
-    precTesto(parole, nomiFile)
-    print("---------------------------CONCORRENZA JOINABLE QUEUE--------------------------------")            
-    procTesto(True , parole, nomiFile)
+    pracTesto(parole, nomiFile)
+    print("---------------------------CONCORRENZA QUEUE--------------------------------")            
+    precTesto(True , parole, nomiFile)
+    print("---------------------------CONCORRENZA FUTURES------------------------------")            
+    pricTesto(True , parole, nomiFile)
+    print("--------------------------------COROUTINE-----------------------------------")            
+    pricTesto(True , parole, nomiFile)
 
 if __name__ == "__main__":
     main()
-#####################################################################
