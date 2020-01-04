@@ -1,0 +1,2 @@
+stato condiviso :['BMW', 'M5', 'rossa']stato : t<class '__main__.automobile'> ['DE123AT', 'Bob Bab']
+stato condiviso :['BMW', 'X1', 'rossa']stato : t<class '__main__.automobile'> ['AR324SD', 'Mike Smith']
