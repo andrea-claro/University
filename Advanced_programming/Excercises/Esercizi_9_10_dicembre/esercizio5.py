@@ -83,7 +83,7 @@ def add_car(factory: FWFactory, targa: str, proprietario: str,marca: str, modell
     print("\n\nClient: Aggiungo un automobile.")
     fw = factory.get_FW([marca, modello, colore])
     
-    fw.op([targa, proprietario],automobile,"automobili.txt")
+    fw.op([targa, proprietario],automobile,"Excercises/Esercizi_9_10_dicembre/automobili.txt")
 
 
 if __name__ == "__main__":
