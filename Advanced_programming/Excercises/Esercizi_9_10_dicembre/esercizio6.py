@@ -61,9 +61,14 @@ class LaureaT_Student(Observed):
         def __init__(self):
             super().__init__()
 
-        def __setattr__(self, name, value):
-            raise Exception("####")
+        def __setitem__(self, name, value):
+            if not isinstance(self, LaureaT_Student.MyDict):
+                raise RuntimeError("####")
+            else:
+                self.update({name:value})
 
+        def add_exam(self, nameExam, gradeExam):
+            self.__setitem__(nameExam, gradeExam)
 
     def __init__(self, cfu):
         super().__init__()
@@ -73,7 +78,7 @@ class LaureaT_Student(Observed):
 
 
     def add_grade(self, infoExam, gradeExam):
-        self.grades[infoExam[0]] = gradeExam
+        self.grades.add_exam(infoExam[0], gradeExam)
         self._total_cfu += infoExam[1]
         self.observers_notify()
 
