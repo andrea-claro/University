@@ -10,7 +10,11 @@ d = A
 f = c.foo
 
 print("dir di a")
-print(dir(a))
+print(dir(a))     #dir() genera la lista degli attributi e metodi dell'oggetto passato, questo è opzionale
+print("####")
+print(dir())
+print("####")
+print(vars())     #vars() ritorna il __dict__ dell'oggetto passato, questo è opzionale
 print()
 print("dir di b")
 print(dir(b))
