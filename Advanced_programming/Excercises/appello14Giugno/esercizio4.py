@@ -21,7 +21,6 @@ def timer(func):
         result = func(*args, **kargs)
         finish = datetime.now()
         print(f'{func.__name__} finito in {finish-start} secondi')
-        return result
     return wrapper
 
 def coroutine(function):
@@ -158,7 +157,7 @@ def cercatore(ricevitore, parola):
 
 def main():
     parole = ["andrea", "ciao", "sono", "mio", "fratello", "mamma"]
-    nomiFile = ["appello14Giugno/testox-1", "appello14Giugno/testox-2"]
+    nomiFile = ["Excercises/appello14Giugno/testox-1", "Excercises/appello14Giugno/testox-2"]
     print("---------------------------SENZA CONCORRENZA--------------------------------")       
     pracTesto(parole, nomiFile)
     print("---------------------------CONCORRENZA QUEUE--------------------------------")            
