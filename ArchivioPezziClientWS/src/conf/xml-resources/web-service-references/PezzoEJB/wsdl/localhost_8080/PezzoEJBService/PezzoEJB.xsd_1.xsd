@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://bussiness.server/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://bussiness.server/">
+
+<xs:element name="addPezzo" type="tns:addPezzo"/>
+
+<xs:element name="addPezzoResponse" type="tns:addPezzoResponse"/>
+
+<xs:element name="findAll" type="tns:findAll"/>
+
+<xs:element name="findAllResponse" type="tns:findAllResponse"/>
+
+<xs:element name="findByCategory" type="tns:findByCategory"/>
+
+<xs:element name="findByCategoryResponse" type="tns:findByCategoryResponse"/>
+
+<xs:element name="findById" type="tns:findById"/>
+
+<xs:element name="findByIdResponse" type="tns:findByIdResponse"/>
+
+<xs:element name="pezzo" type="tns:pezzo"/>
+
+<xs:element name="removePezzo" type="tns:removePezzo"/>
+
+<xs:element name="removePezzoResponse" type="tns:removePezzoResponse"/>
+
+<xs:element name="updatePezzo" type="tns:updatePezzo"/>
+
+<xs:element name="updatePezzoResponse" type="tns:updatePezzoResponse"/>
+
+<xs:complexType name="findAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pezzo" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pezzo">
+<xs:sequence>
+<xs:element name="categoria" type="tns:categoria" minOccurs="0"/>
+<xs:element name="disponibilita" type="xs:boolean"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="nomePezzo" type="xs:string" minOccurs="0"/>
+<xs:element name="pezziVenduti" type="xs:int"/>
+<xs:element name="prezzo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addPezzo">
+<xs:sequence>
+<xs:element name="arg0" type="tns:pezzo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addPezzoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByCategory">
+<xs:sequence>
+<xs:element name="arg0" type="tns:categoria" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByCategoryResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pezzo" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findById">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pezzo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatePezzo">
+<xs:sequence>
+<xs:element name="arg0" type="tns:pezzo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatePezzoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removePezzo">
+<xs:sequence>
+<xs:element name="arg0" type="tns:pezzo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removePezzoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="categoria">
+<xs:restriction base="xs:string">
+<xs:enumeration value="MOTORE"/>
+<xs:enumeration value="FRENI"/>
+<xs:enumeration value="FILTRI"/>
+<xs:enumeration value="CARROZZERIA"/>
+<xs:enumeration value="ACCENSIONE"/>
+<xs:enumeration value="SOSPENSIONI"/>
+<xs:enumeration value="IMPIANTO_ELETTRICO"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>

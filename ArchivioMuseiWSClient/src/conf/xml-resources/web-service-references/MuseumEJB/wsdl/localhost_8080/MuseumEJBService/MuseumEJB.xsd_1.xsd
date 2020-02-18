@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://business.server/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://business.server/">
+
+<xs:element name="addMuseum" type="tns:addMuseum"/>
+
+<xs:element name="addMuseumResponse" type="tns:addMuseumResponse"/>
+
+<xs:element name="findAll" type="tns:findAll"/>
+
+<xs:element name="findAllResponse" type="tns:findAllResponse"/>
+
+<xs:element name="findById" type="tns:findById"/>
+
+<xs:element name="findByIdResponse" type="tns:findByIdResponse"/>
+
+<xs:element name="findByRegion" type="tns:findByRegion"/>
+
+<xs:element name="findByRegionResponse" type="tns:findByRegionResponse"/>
+
+<xs:element name="museum" type="tns:museum"/>
+
+<xs:element name="removeMuseum" type="tns:removeMuseum"/>
+
+<xs:element name="removeMuseumResponse" type="tns:removeMuseumResponse"/>
+
+<xs:element name="updateMuseum" type="tns:updateMuseum"/>
+
+<xs:element name="updateMuseumResponse" type="tns:updateMuseumResponse"/>
+
+<xs:complexType name="findAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:museum" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="museum">
+<xs:sequence>
+<xs:element name="annualVisitors" type="xs:int"/>
+<xs:element name="city" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="manager" type="xs:string" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="province" type="xs:string" minOccurs="0"/>
+<xs:element name="region" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addMuseum">
+<xs:sequence>
+<xs:element name="arg0" type="tns:museum" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addMuseumResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="updateMuseum">
+<xs:sequence>
+<xs:element name="arg0" type="tns:museum" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateMuseumResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findByRegion">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByRegionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:museum" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeMuseum">
+<xs:sequence>
+<xs:element name="arg0" type="tns:museum" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeMuseumResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findById">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:museum" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

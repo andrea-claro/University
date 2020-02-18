@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://businness.server/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://businness.server/">
+
+<xs:element name="addFornitore" type="tns:addFornitore"/>
+
+<xs:element name="addFornitoreResponse" type="tns:addFornitoreResponse"/>
+
+<xs:element name="findAll" type="tns:findAll"/>
+
+<xs:element name="findAllResponse" type="tns:findAllResponse"/>
+
+<xs:element name="findById" type="tns:findById"/>
+
+<xs:element name="findByIdResponse" type="tns:findByIdResponse"/>
+
+<xs:element name="findByMaxOrd" type="tns:findByMaxOrd"/>
+
+<xs:element name="findByMaxOrdResponse" type="tns:findByMaxOrdResponse"/>
+
+<xs:element name="findBySurname" type="tns:findBySurname"/>
+
+<xs:element name="findBySurnameResponse" type="tns:findBySurnameResponse"/>
+
+<xs:element name="removeFornitore" type="tns:removeFornitore"/>
+
+<xs:element name="removeFornitoreResponse" type="tns:removeFornitoreResponse"/>
+
+<xs:element name="updateFornitore" type="tns:updateFornitore"/>
+
+<xs:element name="updateFornitoreResponse" type="tns:updateFornitoreResponse"/>
+
+<xs:complexType name="findByMaxOrd">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByMaxOrdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:fornitore" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fornitore">
+<xs:sequence>
+<xs:element name="cognome" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="maxOrd" type="xs:int"/>
+<xs:element name="nome" type="xs:string" minOccurs="0"/>
+<xs:element name="nomeSocieta" type="xs:string" minOccurs="0"/>
+<xs:element name="numTel" type="xs:string" minOccurs="0"/>
+<xs:element name="totOrd" type="xs:int"/>
+<xs:element name="valTotOrd" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:fornitore" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addFornitore">
+<xs:sequence>
+<xs:element name="arg0" type="tns:fornitore" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addFornitoreResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findById">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:fornitore" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findBySurname">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findBySurnameResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:fornitore" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeFornitore">
+<xs:sequence>
+<xs:element name="arg0" type="tns:fornitore" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeFornitoreResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="updateFornitore">
+<xs:sequence>
+<xs:element name="arg0" type="tns:fornitore" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateFornitoreResponse">
+<xs:sequence/>
+</xs:complexType>
+</xs:schema>
