@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://bussiness.server/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://bussiness.server/">
+
+<xs:element name="addCanzone" type="tns:addCanzone"/>
+
+<xs:element name="addCanzoneResponse" type="tns:addCanzoneResponse"/>
+
+<xs:element name="canzone" type="tns:canzone"/>
+
+<xs:element name="findAll" type="tns:findAll"/>
+
+<xs:element name="findAllResponse" type="tns:findAllResponse"/>
+
+<xs:element name="findByCat" type="tns:findByCat"/>
+
+<xs:element name="findByCatResponse" type="tns:findByCatResponse"/>
+
+<xs:element name="findById" type="tns:findById"/>
+
+<xs:element name="findByIdResponse" type="tns:findByIdResponse"/>
+
+<xs:element name="findByVotes" type="tns:findByVotes"/>
+
+<xs:element name="findByVotesResponse" type="tns:findByVotesResponse"/>
+
+<xs:element name="removeCanzone" type="tns:removeCanzone"/>
+
+<xs:element name="removeCanzoneResponse" type="tns:removeCanzoneResponse"/>
+
+<xs:element name="updateCanzone" type="tns:updateCanzone"/>
+
+<xs:element name="updateCanzoneResponse" type="tns:updateCanzoneResponse"/>
+
+<xs:complexType name="findById">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:canzone" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="canzone">
+<xs:sequence>
+<xs:element name="cantato" type="xs:boolean"/>
+<xs:element name="categoria" type="tns:categoria" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="incipit" type="xs:string" minOccurs="0"/>
+<xs:element name="nomeCantante" type="xs:string" minOccurs="0"/>
+<xs:element name="votiRicevuti" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeCanzone">
+<xs:sequence>
+<xs:element name="arg0" type="tns:canzone" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeCanzoneResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:canzone" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByCat">
+<xs:sequence>
+<xs:element name="arg0" type="tns:categoria" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByCatResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:canzone" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addCanzone">
+<xs:sequence>
+<xs:element name="arg0" type="tns:canzone" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addCanzoneResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateCanzone">
+<xs:sequence>
+<xs:element name="arg0" type="tns:canzone" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateCanzoneResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByVotes">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByVotesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:canzone" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="categoria">
+<xs:restriction base="xs:string">
+<xs:enumeration value="ROCK"/>
+<xs:enumeration value="POP"/>
+<xs:enumeration value="TRAP"/>
+<xs:enumeration value="RAP"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
