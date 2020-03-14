@@ -7,3 +7,5 @@ Distributed_programming/Socket/bin/.DS_Store
 Distributed_programming/.DS_Store
 Distributed_programming/HelloWoldRMI/.DS_Store
 *.class
+.DS_Store
+*.gradle

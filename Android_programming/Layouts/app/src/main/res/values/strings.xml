@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Layouts</string>
+    <string name="activity_main">Activity main</string>
+    <string name="grid_layout">Grid layout</string>
+    <string name="linear_layout">Linear layout</string>
+    <string name="linear_layout_no_weight">Linear layout no weight</string>
+    <string name="linear_layout_frames">Linear layout frames</string>
+    <string name="linear_layout_wrap">Linear layout wrap</string>
+    <string name="padding_and_margin">Padding and margin</string>
+    <string name="relative">Relative</string>
+    <string name="widgets">Widgets</string>
+    <string name="text">text</string>
+    <string name="button_1">Button 1</string>
+    <string name="button_2">Button 2</string>
+    <string name="button_3">Button 3</string>
+    <string name="button_4">Button 4</string>
+</resources>
