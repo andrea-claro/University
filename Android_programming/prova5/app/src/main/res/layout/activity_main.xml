@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Menù"
+        android:textSize="27dp"
+        android:background="@color/lightBlue"
+        android:gravity="center"
+        android:id="@+id/titolo"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/titolo"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/pizza"
+            android:layout_margin="15dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pizza"
+                android:onClick="onCheckHandler"
+                android:layout_alignParentLeft="true"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€ 5.30"
+                android:layout_alignParentRight="true"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/pasta"
+            android:layout_margin="15dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pasta"
+                android:onClick="onCheckHandler"
+                android:layout_alignParentLeft="true"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€ 7.80"
+                android:layout_alignParentRight="true"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/carne"
+            android:layout_margin="15dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Carne"
+                android:onClick="onCheckHandler"
+                android:layout_alignParentLeft="true"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€ 12.00"
+                android:layout_alignParentRight="true"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/insalata"
+            android:layout_margin="15dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Insalata"
+                android:onClick="onCheckHandler"
+                android:layout_alignParentLeft="true"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€ 4.00"
+                android:layout_alignParentRight="true"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/acqua"
+            android:layout_margin="15dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Acqua"
+                android:onClick="onCheckHandler"
+                android:layout_alignParentLeft="true"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€ 1.50"
+                android:layout_alignParentRight="true"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/vino"
+            android:layout_margin="15dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vino"
+                android:onClick="onCheckHandler"
+                android:layout_alignParentLeft="true"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€ 2.50"
+                android:layout_alignParentRight="true"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/gelato"
+            android:layout_margin="15dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gelato"
+                android:onClick="onCheckHandler"
+                android:layout_alignParentLeft="true"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€ 1.80"
+                android:layout_alignParentRight="true"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/caffe"
+            android:layout_margin="15dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Caffè"
+                android:onClick="onCheckHandler"
+                android:layout_alignParentLeft="true"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€ 0.90"
+                android:layout_alignParentRight="true"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/amaro"
+            android:layout_margin="15dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amaro"
+                android:onClick="onCheckHandler"
+                android:layout_alignParentLeft="true"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€ 3.00"
+                android:layout_alignParentRight="true"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/bill"
+            android:layout_margin="15dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="Scontrino"
+                android:onClick="onButtonHandler"
+                android:textSize="27dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ToT: €"
+                android:clickable="false"
+                android:id="@+id/totale"
+                android:layout_alignParentRight="true"
+                android:textSize="27dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
